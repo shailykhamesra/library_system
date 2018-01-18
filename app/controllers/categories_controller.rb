@@ -17,6 +17,9 @@ class CategoriesController < ApplicationController
   end
   def new
     @category = Category.new
+    respond_to do |format|
+      format.json { render json: {category: @category}, status: :ok }
+    end
   end
   def edit
   	respond_to do |format|

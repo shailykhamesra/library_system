@@ -17,6 +17,9 @@ class MembersController < ApplicationController
    end
   def new
     @member= Member.new
+    respond_to do |format|
+      format.json {render json: {member: @member}, status: :ok }
+    end
   end
   def edit
     respond_to do |format|

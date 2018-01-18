@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe membersController, type: :controller do
+RSpec.describe MembersController, type: :controller do
   context 'GET index' do
     it 'should show all member successfully' do
       get :index, format: 'json'

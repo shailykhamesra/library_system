@@ -17,6 +17,9 @@ class IssueHistoriesController < ApplicationController
   end
   def new
     @issue_history = IssueHistory.new
+    respond_to do |format|
+      format.json { render json: {issue_history: @issue_history}, status: :ok }
+    end
   end
   def edit
   	respond_to do |format|

@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe librarysController, type: :controller do
+RSpec.describe LibrariesController, type: :controller do
   context 'GET index' do
     it 'should show all library successfully' do
       get :index, format: 'json'
@@ -22,7 +22,6 @@ RSpec.describe librarysController, type: :controller do
   context 'GET new' do
     it 'should get new library successfully' do
       library = FactoryGirl.create(:library)
-      library.destroy
       get :new, params:{library:{name:library.name, address:library.address, phone:library.phone}}, format: 'json'
       response.should have_http_status(:ok)
     end
@@ -64,7 +63,8 @@ RSpec.describe librarysController, type: :controller do
     end
     it 'should not be valid library updation' do
       library = FactoryGirl.create(:library)
-      put :update, params: { id: library.id,library:{name: "", address:"", phone: ""} }, format: 'json'
+      library.destroy
+      put :update, params: { id: library.id,library:{name: ""} }, format: 'json'
       response.should have_http_status(:unprocessable_entity)
     end
   end

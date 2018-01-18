@@ -17,6 +17,9 @@ class BooksController < ApplicationController
   end
   def new
     @book = Book.new
+    respond_to do |format|
+      format.json { render json: {book: @Book}, status: :ok }
+    end
   end
   def edit
   	respond_to do |format|

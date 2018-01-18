@@ -17,6 +17,9 @@ class LibrariesController < ApplicationController
    end
   def new
     @Library= Library.new
+    respond_to do |format|
+      format.json { render json: {library: @library}, status: :ok }
+    end
   end
   def edit
     respond_to do |format|

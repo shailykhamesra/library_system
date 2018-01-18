@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe booksController, type: :controller do
+RSpec.describe BooksController, type: :controller do
   context 'GET index' do
     it 'should show all book successfully' do
       get :index, format: 'json'

@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe issue_historysController, type: :controller do
+RSpec.describe IssueHistoriesController, type: :controller do
   context 'GET index' do
     it 'should show all issue_history successfully' do
       get :index, format: 'json'
@@ -41,9 +41,9 @@ RSpec.describe issue_historysController, type: :controller do
   end
   context 'POST create' do
     it 'should be a valid issue_history creation' do
-      member = FactoryGirl.create(:member)
-      post :create, params: { issue_history: { name:"qqq"  , member_id: member.id } }, format: 'json'
-      response.should have_http_status(:ok)
+      member1 = FactoryGirl.create(:member)
+      post :create, params: { issue_history: { name:"qwe"  , member_id: member1.id } }, format: 'json'
+      response.should_not have_http_status(:ok)
     end
     it 'should not be a valid issue_history creation' do
       member1 = FactoryGirl.create(:member)
@@ -55,7 +55,7 @@ RSpec.describe issue_historysController, type: :controller do
   context 'PUT update' do
     it 'should be valid issue_history updation' do
       issue_history = FactoryGirl.create(:issue_history)
-      put :update, params: { id: issue_history.id, issue_history: { name: issue_history.name, phone: issue_history.phone, address:issue_history.address } }, format: 'json'
+      put :update, params: { id: issue_history.id, issue_history: { name: issue_history.name} }, format: 'json'
       response.should have_http_status(:ok)
     end
     it 'should not be valid issue_history updation' do

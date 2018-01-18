@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe categorysController, type: :controller do
+RSpec.describe CategoriesController, type: :controller do
   context 'GET index' do
     it 'should show all category successfully' do
       get :index, format: 'json'
