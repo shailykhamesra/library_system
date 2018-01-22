@@ -55,7 +55,9 @@ RSpec.describe MembersController, type: :controller do
   context 'PUT update' do
     it 'should be valid member updation' do
       member = FactoryGirl.create(:member)
-      put :update, params: { id: member.id, member: { name: member.name, phone: member.phone, address:member.address } }, format: 'json'
+      put :update, params: { id: member.id, member: { name: 'a', phone: '1234567890', address: 'a' } }, format: 'json'
+      member1=Member.last
+      member1.name.should eq 'a'
       response.should have_http_status(:ok)
     end
     it 'should not be valid member updation' do

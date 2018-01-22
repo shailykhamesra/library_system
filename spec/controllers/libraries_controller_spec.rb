@@ -52,7 +52,9 @@ RSpec.describe LibrariesController, type: :controller do
   context 'PUT update' do
     it 'should be valid library updation' do
       library = FactoryGirl.create(:library)
-      put :update, params: { id: library.id, library: { name: library.name, address:library.address, phone:library.phone} }, format: 'json'
+      put :update, params: { id: library.id, library: { name: 'a', address: 'a', phone: '1234567890'} }, format: 'json'
+      library1=Library.last
+      library1.name.should eq 'a'
       response.should have_http_status(:ok)
     end
     it 'should not be valid library updation' do

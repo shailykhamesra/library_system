@@ -53,7 +53,9 @@ RSpec.describe CategoriesController, type: :controller do
   context 'PUT update' do
     it 'should be valid category updation' do
       category = FactoryGirl.create(:category)
-      put :update, params: { id: category.id, category: { name: category.name } }, format: 'json'
+      put :update, params: { id: category.id, category: { name: 'a' } }, format: 'json'
+      category1=Category.last
+      category1.name.should eq 'a'
       response.should have_http_status(:ok)
     end
     it 'should not be valid category updation' do

@@ -55,7 +55,9 @@ RSpec.describe IssueHistoriesController, type: :controller do
   context 'PUT update' do
     it 'should be valid issue_history updation' do
       issue_history = FactoryGirl.create(:issue_history)
-      put :update, params: { id: issue_history.id, issue_history: { name: issue_history.name} }, format: 'json'
+      put :update, params: { id: issue_history.id, issue_history: { name: 'a'} }, format: 'json'
+      issue_history1=IssueHistory.last
+      issue_history1.name.should eq 'a'
       response.should have_http_status(:ok)
     end
     it 'should not be valid issue_history updation' do

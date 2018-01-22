@@ -79,7 +79,9 @@ RSpec.describe BooksController, type: :controller do
   context 'PUT update' do
     it 'should be valid book updation' do
       book = FactoryGirl.create(:book)
-      put :update, params: { id: book.id,book:{name: book.name} }, format: 'json'
+      put :update, params: { id: book.id,book:{name: 'a'} }, format: 'json'
+      book1=Book.last
+      book1.name.should eq 'a'
       response.should have_http_status(:ok)
     end
     it 'should not be valid book updation' do
